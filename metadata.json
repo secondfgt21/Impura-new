@@ -1,0 +1,6 @@
+{
+  "name": "Impura Premium AI Accounts",
+  "description": "Premium AI Accounts store (Gemini AI Pro, ChatGPT Plus) with QRIS billing, secure stock delivery, and comprehensive admin order verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
