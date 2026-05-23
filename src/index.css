@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", sans-serif;
+  --font-mono: "Inter", sans-serif;
+  
+  --color-neon-red: rgba(255, 42, 42, 0.38);
+}
+
+/* Base custom styles to recreate Bento Grid dark dashboard ambient vibe with premium finish */
+:root {
+  --bg: #070707;
+  --panel: rgba(17, 17, 17, 0.70);
+  --text: #f5f5f5;
+  --muted: #a3a3a3;
+  --red: #ff1b2d;
+  --red-dark: #b30018;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #d4d4d4; 
+  background-color: #070707;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 27, 45, 0.14) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(179, 0, 24, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+/* Subtle television scanline effect, faithful to visual density */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+  background-size: 100% 4px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 20;
+  mix-blend-mode: screen;
+}
+
+/* Vignette overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(2, 6, 23, 0.4) 100%);
+  pointer-events: none;
+  z-index: 19;
+}
+
+/* Custom panels and glowing indicators - Bento Theme Card layout */
+.panel-glow {
+  background-color: rgba(17, 17, 17, 0.65);
+  border: 1px solid rgba(255, 27, 45, 0.15); /* thin red border */
+  box-shadow: 
+    0 0 0 1px rgba(255,27,45,0.03) inset,
+    0 12px 36px -4px rgba(255, 27, 45, 0.08); /* soft red glow */
+  backdrop-filter: blur(12px);
+}
+
+.glow-red {
+  text-shadow: 0 0 12px rgba(255, 59, 59, 0.5);
+}
+
+/* Hide scrollbars for simple clean views */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glitch animation text effect on CTA primary button */
+@keyframes glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+    transform: translate(-1px, 1px);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+    transform: translate(0.5px, -1.5px);
+  }
+  40% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-0.5px, 1px);
+  }
+  60% {
+    clip-path: inset(67% 0 24% 0);
+    transform: translate(1px, -0.5px);
+  }
+  80% {
+    clip-path: inset(12% 0 71% 0);
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    clip-path: inset(0);
+    transform: translate(0);
+  }
+}
+
+.glitch-hover:hover::before {
+  content: attr(data-glitch);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff1b2d, #b30018);
+  text-shadow: -1px 0 #ff3b3b, 1px 0 #0a0a0a;
+  animation: glitch 0.3s linear infinite;
+  pointer-events: none;
+}
